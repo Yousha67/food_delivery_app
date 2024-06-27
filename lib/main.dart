@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/pages/bottomnav.dart';
 import 'package:food_delivery_app/pages/loginpage.dart';
+import 'package:food_delivery_app/pages/onboard.dart';
+import 'package:food_delivery_app/pages/sign_up.dart';
 
 import 'home.dart';
 
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:Loginpage(),
+      home:OnBoard(),
     );
   }
 }
