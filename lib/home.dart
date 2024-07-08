@@ -65,7 +65,7 @@ class _HomeState extends State<Home> {
                               crossAxisAlignment: CrossAxisAlignment.start,
 
                               children: [
-                                Image.asset('images/Salad.png',height: 150.0,width: 150.0,fit: BoxFit.cover,),
+                                Image.asset('images/salad1.png',height: 150.0,width: 150.0,fit: BoxFit.cover,),
                                 Text('The besutiful Salaad',style: AppWidget.semiboldtextfiledstyle(),),
                                 SizedBox(height: 20,),
                                 Text('Fresh and Healthy',style: AppWidget.lightfontfiledstyle(),),
@@ -92,7 +92,7 @@ class _HomeState extends State<Home> {
                             crossAxisAlignment: CrossAxisAlignment.start,
         
                             children: [
-                              Image.asset('images/Salad.png',height: 150.0,width: 150.0,fit: BoxFit.cover,),
+                              Image.asset('images/salad2.png',height: 150.0,width: 150.0,fit: BoxFit.cover,),
                               Text('The besutiful Salaad',style: AppWidget.semiboldtextfiledstyle(),),
                               SizedBox(height: 20,),
                               Text('Fresh and Healthy',style: AppWidget.lightfontfiledstyle(),),
@@ -119,7 +119,7 @@ class _HomeState extends State<Home> {
                             crossAxisAlignment: CrossAxisAlignment.start,
         
                             children: [
-                              Image.asset('images/Salad.png',height: 150.0,width: 150.0,fit: BoxFit.cover,),
+                              Image.asset('images/salad3.png',height: 150.0,width: 150.0,fit: BoxFit.cover,),
                               Text('The besutiful Salaad',style: AppWidget.semiboldtextfiledstyle(),),
                               SizedBox(height: 20,),
                               Text('Fresh and Healthy',style: AppWidget.lightfontfiledstyle(),),
@@ -143,7 +143,7 @@ class _HomeState extends State<Home> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset('images/pizza.png',height: 120,width: 120,fit: BoxFit.cover,),
+                    Image.asset('images/pizzaslice.png',height: 120,width: 120,fit: BoxFit.cover,),
                     SizedBox(width: 20,),
                     Column(children: [
                       Container(

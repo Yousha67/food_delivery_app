@@ -25,7 +25,7 @@ class _DetailsState extends State<Details> {
                 },
                 child: Icon(Icons.arrow_back_ios_new_outlined,color: Colors.black,)
             ),
-            Image.asset('images/burger.png',width: MediaQuery.sizeOf(context).width,height: MediaQuery.sizeOf(context).height/2.5,fit: BoxFit.fill,),
+            Image.asset('images/salad1.png',width: MediaQuery.sizeOf(context).width,height: MediaQuery.sizeOf(context).height/2.5,fit: BoxFit.fill,),
 
             Row(
 

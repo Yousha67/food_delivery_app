@@ -1,13 +1,22 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:food_delivery_app/pages/app_content.dart';
 import 'package:food_delivery_app/pages/bottomnav.dart';
 import 'package:food_delivery_app/pages/loginpage.dart';
 import 'package:food_delivery_app/pages/onboard.dart';
 import 'package:food_delivery_app/pages/sign_up.dart';
+import 'package:food_delivery_app/pages/forget_pass.dart';
+
 
 import 'home.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Stripe.publishableKey=publishablekey;
+  await Firebase.initializeApp();
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

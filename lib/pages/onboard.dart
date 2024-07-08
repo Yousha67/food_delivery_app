@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/pages/content_model.dart';
+import 'package:food_delivery_app/pages/loginpage.dart';
 import 'package:food_delivery_app/pages/sign_up.dart';
 import 'package:food_delivery_app/pages/widget_support.dart';
 class OnBoard extends StatefulWidget {
@@ -35,23 +36,29 @@ class _OnBoardState extends State<OnBoard> {
               controller: _controller,
               itemCount: contents.length,
               onPageChanged: (int index){
-                currentindex=index;
+                setState(() {
+                  currentindex=index;
+                });
+
               },
               itemBuilder: ( _,i ){
           
             return Padding(padding: EdgeInsets.all(20),
           
-            child: Column(children: [
-              Image.asset(contents[i].image,height: 400,
-                width: MediaQuery.sizeOf(context).width/1.5,fit: BoxFit.fill,),
-              SizedBox(height: 40,),
-              Text(contents[i].title,style: AppWidget.semiboldtextfiledstyle(),),
-              SizedBox(height: 20,),
-              Text(contents[i].description,style: AppWidget.lightfontfiledstyle(),),
-          
-          
-          
-            ],),
+            child: SingleChildScrollView(
+
+              child: Column(children: [
+                Image.asset(contents[i].image,height: 400,
+                  width: MediaQuery.sizeOf(context).width/1.5,fit: BoxFit.fill,),
+                SizedBox(height: 40,),
+                Text(contents[i].title,style: AppWidget.semiboldtextfiledstyle(),),
+                SizedBox(height: 20,),
+                Text(contents[i].description,style: AppWidget.lightfontfiledstyle(),),
+
+
+
+              ],),
+            ),
           
             );
           }
@@ -70,7 +77,7 @@ class _OnBoardState extends State<OnBoard> {
             onTap: (){
               if(currentindex==contents.length-1){
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context)=>SignUp(),));
+                    MaterialPageRoute(builder: (context)=>Loginpage(),));
               }
               _controller.nextPage(duration: Duration(milliseconds: 100),
                   curve: Curves.bounceIn);
