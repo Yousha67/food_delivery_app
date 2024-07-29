@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/admin/admin_login.dart';
 import 'package:food_delivery_app/pages/profilepage.dart';
 import 'package:food_delivery_app/pages/walletpage.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -16,17 +17,19 @@ class _BottomNavState extends State<BottomNav> {
   late Widget currentpage;
   late List<Widget>pages;
   late Home homepage;
-  late Profile profile;
+  late AdminLogin adminLogin;
+  //late Profile profile;
   late Order order;
   late Wallet wallet;
   @override
   @override
   void initState() {
     homepage = Home();
-    profile = Profile();
+    adminLogin= AdminLogin();
+    //profile = Profile();
     order = Order();
     wallet = Wallet();
-    pages=[homepage,order,wallet,profile];
+    pages=[homepage,order,wallet,adminLogin];//,profile];
     super.initState();
   }
   Widget build(BuildContext context) {
