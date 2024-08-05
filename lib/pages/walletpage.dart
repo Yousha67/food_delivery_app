@@ -53,126 +53,128 @@ class _WalletState extends State<Wallet> {
     return Scaffold(
       body: wallet==null? CircularProgressIndicator() :Container(
         margin: EdgeInsets.only(top: 60),
-        child: Column(children: [
-          Material(
-           elevation: 3,
-            child: Container(
-              margin: EdgeInsets.only(bottom: 10),
-             child:Center(child: Text("Wallet",style: AppWidget.Headingfiledstyle(),)),
-
-            ),
-          ),
-          SizedBox(height: 30,),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
-            decoration: BoxDecoration(color: Color(0xFFF2F2F2)),
-            child: Row(children: [
-              Image.asset("images/wallet.png",height: 70,width: 70,fit:BoxFit.cover),
-              SizedBox(width: 40,),
-              Column(
-
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                Text("Your Wallet",style: AppWidget.lightfontfiledstyle(),),
-                  SizedBox(height: 8.0,),
-                  Text("\$"+ wallet!,
-                    style: AppWidget.boldtextfiledstyle(),)
-              ],),
-
-            ],
-            ),
-          ),
-          SizedBox(height: 15,),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Text("Add Money",style: AppWidget.boldtextfiledstyle(),),
-              ),
-            ],
-          ),
-          SizedBox(height: 7.0,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-            GestureDetector(
-              onTap: (){
-                makePayment('100');
-              },
+        child: SingleChildScrollView(
+          child: Column(children: [
+            Material(
+             elevation: 3,
               child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Color(0xFFE9E2E2)),
+                margin: EdgeInsets.only(bottom: 10),
+               child:Center(child: Text("Wallet",style: AppWidget.Headingfiledstyle(),)),
+          
+              ),
+            ),
+            SizedBox(height: 30,),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
+              decoration: BoxDecoration(color: Color(0xFFF2F2F2)),
+              child: Row(children: [
+                Image.asset("images/wallet.png",height: 70,width: 70,fit:BoxFit.cover),
+                SizedBox(width: 40,),
+                Column(
+          
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                  Text("Your Wallet",style: AppWidget.lightfontfiledstyle(),),
+                    SizedBox(height: 8.0,),
+                    Text("\$"+ wallet!,
+                      style: AppWidget.boldtextfiledstyle(),)
+                ],),
+          
+              ],
+              ),
+            ),
+            SizedBox(height: 15,),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+          
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Text("Add Money",style: AppWidget.boldtextfiledstyle(),),
+                ),
+              ],
+            ),
+            SizedBox(height: 7.0,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+              GestureDetector(
+                onTap: (){
+                  makePayment('100');
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Color(0xFFE9E2E2)),
+                        borderRadius: BorderRadius.circular(8)
+                  ),
+                  padding: EdgeInsets.all(8.0),
+                  child: Text("\$"+"100",style: AppWidget.semiboldtextfiledstyle(),),
+                ),
+              ),
+              GestureDetector(
+                onTap: (){
+                  makePayment('500');
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Color(0xFFE9E2E2)),
                       borderRadius: BorderRadius.circular(8)
+                  ),
+                  padding: EdgeInsets.all(8.0),
+                  child: Text("\$"+"500",style: AppWidget.semiboldtextfiledstyle(),),
                 ),
-                padding: EdgeInsets.all(8.0),
-                child: Text("\$"+"100",style: AppWidget.semiboldtextfiledstyle(),),
               ),
-            ),
+              GestureDetector(
+                onTap: (){
+                  makePayment('1000');
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Color(0xFFE9E2E2)),
+                      borderRadius: BorderRadius.circular(8)
+                  ),
+                  padding: EdgeInsets.all(8.0),
+                  child: Text("\$"+"1000",style: AppWidget.semiboldtextfiledstyle(),),
+                ),
+              ),
+              GestureDetector(
+                onTap: (){
+                  makePayment('2000');
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Color(0xFFE9E2E2)),
+                      borderRadius: BorderRadius.circular(8)
+                  ),
+                  padding: EdgeInsets.all(8.0),
+                  child: Text("\$"+"2000",style: AppWidget.semiboldtextfiledstyle(),),
+                ),
+              ),
+          
+            ],),
+            SizedBox(height: 45,),
             GestureDetector(
               onTap: (){
-                makePayment('500');
+                openEdit();
               },
               child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 20.0),
+                padding: EdgeInsets.symmetric(vertical: 15),
+                width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                    border: Border.all(color: Color(0xFFE9E2E2)),
-                    borderRadius: BorderRadius.circular(8)
+                  borderRadius: BorderRadius.circular(15.0),
+                  color: Colors.teal,
+          
                 ),
-                padding: EdgeInsets.all(8.0),
-                child: Text("\$"+"500",style: AppWidget.semiboldtextfiledstyle(),),
-              ),
-            ),
-            GestureDetector(
-              onTap: (){
-                makePayment('1000');
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    border: Border.all(color: Color(0xFFE9E2E2)),
-                    borderRadius: BorderRadius.circular(8)
+                child: Center(
+                  child: Text("Add Money",style:
+                  TextStyle(color: Colors.white,fontSize: 25.0,fontWeight: FontWeight.bold),),
                 ),
-                padding: EdgeInsets.all(8.0),
-                child: Text("\$"+"1000",style: AppWidget.semiboldtextfiledstyle(),),
               ),
-            ),
-            GestureDetector(
-              onTap: (){
-                makePayment('2000');
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    border: Border.all(color: Color(0xFFE9E2E2)),
-                    borderRadius: BorderRadius.circular(8)
-                ),
-                padding: EdgeInsets.all(8.0),
-                child: Text("\$"+"2000",style: AppWidget.semiboldtextfiledstyle(),),
-              ),
-            ),
-
+            )
+          
           ],),
-          SizedBox(height: 45,),
-          GestureDetector(
-            onTap: (){
-              openEdit();
-            },
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 20.0),
-              padding: EdgeInsets.symmetric(vertical: 15),
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15.0),
-                color: Colors.teal,
-
-              ),
-              child: Center(
-                child: Text("Add Money",style:
-                TextStyle(color: Colors.white,fontSize: 25.0,fontWeight: FontWeight.bold),),
-              ),
-            ),
-          )
-
-        ],),
+        ),
 
       ),
     );
@@ -255,18 +257,22 @@ class _WalletState extends State<Wallet> {
   Future openEdit()=>showDialog(context: context, builder: (context)=>AlertDialog(
 
     content: SingleChildScrollView(
-      child: Container(
-        child: Column(
+
+      child: Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+
               GestureDetector(
                 onTap: (){
                   Navigator.pop(context);
                 },
                 child: Icon(Icons.cancel),
               ),
-              SizedBox(width: 60.0,),
+
               Center(
                 child: Text('Add Money ',style:
                   TextStyle(color: Color(0xFF008080),fontWeight: FontWeight.bold,fontSize: 15.0),),
@@ -292,6 +298,7 @@ class _WalletState extends State<Wallet> {
                   border: InputBorder.none,
                   hintText: "Enter Amount",
                 ),
+                keyboardType: TextInputType.number,
               ),
             ),
             SizedBox(height: 20.0,),
@@ -303,7 +310,7 @@ class _WalletState extends State<Wallet> {
                 },
                 child: Container(
                   width: 100,
-                  padding: EdgeInsets.all(5.0),
+                  padding: EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
                     color: Color(0xFF008080),
                     borderRadius: BorderRadius.circular(10.0)
@@ -314,7 +321,7 @@ class _WalletState extends State<Wallet> {
             )
           ],
         ),
-      ),
+
     ),
 
   ));

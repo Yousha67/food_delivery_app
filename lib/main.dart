@@ -7,9 +7,10 @@ import 'package:food_delivery_app/pages/app_content.dart';
 import 'package:food_delivery_app/pages/bottomnav.dart';
 import 'package:food_delivery_app/pages/loginpage.dart';
 import 'package:food_delivery_app/pages/onboard.dart';
+import 'package:food_delivery_app/pages/profilepage.dart';
 import 'package:food_delivery_app/pages/sign_up.dart';
 import 'package:food_delivery_app/pages/forget_pass.dart';
-
+import 'package:food_delivery_app/pages/splash_screen.dart';
 
 import 'home.dart';
 
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:OnBoard(),
+      home:SplashScreen(),
     );
   }
 }

@@ -17,19 +17,19 @@ class _BottomNavState extends State<BottomNav> {
   late Widget currentpage;
   late List<Widget>pages;
   late Home homepage;
-  late AdminLogin adminLogin;
-  //late Profile profile;
+  //late AdminLogin adminLogin;
+  late Profile profile;
   late Order order;
   late Wallet wallet;
   @override
   @override
   void initState() {
     homepage = Home();
-    adminLogin= AdminLogin();
-    //profile = Profile();
+    //adminLogin= AdminLogin();
+    profile = Profile();
     order = Order();
     wallet = Wallet();
-    pages=[homepage,order,wallet,adminLogin];//,profile];
+    pages=[homepage,order,wallet,profile];//,adminLogin];
     super.initState();
   }
   Widget build(BuildContext context) {

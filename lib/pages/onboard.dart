@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/home.dart';
+import 'package:food_delivery_app/pages/bottomnav.dart';
 import 'package:food_delivery_app/pages/content_model.dart';
 import 'package:food_delivery_app/pages/loginpage.dart';
 import 'package:food_delivery_app/pages/sign_up.dart';
@@ -11,6 +14,19 @@ class OnBoard extends StatefulWidget {
 }
 
 class _OnBoardState extends State<OnBoard> {
+  var auth=FirebaseAuth.instance;
+  var isLogin=false;
+  checkIfLogin()async{
+    auth.authStateChanges().listen((User? user){
+      if(user!=null&&mounted){
+        setState(() {
+          isLogin=true;
+        });
+      }
+    });
+  }
+
+
   int currentindex = 0;
   late PageController _controller;
   @override
@@ -18,8 +34,10 @@ class _OnBoardState extends State<OnBoard> {
     _controller.dispose();
     super.dispose();
   }
+
   @override
   void initState() {
+    checkIfLogin();
     _controller=PageController(initialPage: 0);
     super.initState();
   }
@@ -77,7 +95,7 @@ class _OnBoardState extends State<OnBoard> {
             onTap: (){
               if(currentindex==contents.length-1){
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context)=>Loginpage(),));
+                    MaterialPageRoute(builder: (context)=>isLogin? BottomNav():Loginpage(),));
               }
               _controller.nextPage(duration: Duration(milliseconds: 100),
                   curve: Curves.bounceIn);

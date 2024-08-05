@@ -1,14 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/pages/database.dart';
+import 'package:food_delivery_app/pages/shared_pref.dart';
 import 'package:food_delivery_app/pages/widget_support.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 class Details extends StatefulWidget {
-  const Details({super.key});
+final  String image,name,detail,price;
+  Details({required this.detail,required this.image,required this.name,required this.price});
+
 
   @override
   State<Details> createState() => _DetailsState();
 }
 
 class _DetailsState extends State<Details> {
-  int a = 1;
+  int a = 1,total=0;
+  String? id;
+
+  getthesharedpref()async{
+   id= await SharedPreferenceHelper().getUserId();
+   setState(() {
+
+   });
+  }
+
+  ontheload()async{
+    await getthesharedpref();
+    setState(() {
+
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ontheload();
+    total=int.parse(widget.price);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,8 +54,8 @@ class _DetailsState extends State<Details> {
                 },
                 child: Icon(Icons.arrow_back_ios_new_outlined,color: Colors.black,)
             ),
-            Image.asset('images/salad1.png',width: MediaQuery.sizeOf(context).width,height: MediaQuery.sizeOf(context).height/2.5,fit: BoxFit.fill,),
-
+            Image.network(widget.image,width: MediaQuery.sizeOf(context).width,height: MediaQuery.sizeOf(context).height/2.5,fit: BoxFit.fill,),
+SizedBox(height: 20.0,),
             Row(
 
               children: [
@@ -36,8 +65,8 @@ class _DetailsState extends State<Details> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
 
-                    Text('Mediterian',style: AppWidget.semiboldtextfiledstyle(),),
-                    Text('Chickpes Salad',style: AppWidget.boldtextfiledstyle(),),
+                    Text(widget.name,style: AppWidget.semiboldtextfiledstyle(),),
+
                   ],
                 ),
                 Spacer(),
@@ -46,6 +75,7 @@ class _DetailsState extends State<Details> {
                   onTap: (){
                     if(a>1){
                     --a;
+                    total=total-int.parse(widget.price);
                     }
                     setState(() {
 
@@ -65,6 +95,7 @@ class _DetailsState extends State<Details> {
                 GestureDetector(
                   onTap: (){
                     ++a;
+                    total=total+int.parse(widget.price);
                     setState(() {
 
                     });
@@ -78,7 +109,7 @@ class _DetailsState extends State<Details> {
                 ),
               ],
             ),
-            Text("The Mediterium Chip Salad is a refreshing and healthy dish, featuring fresh Romaine lettuce, cherry tomatoes, cucumbers, red onions, Kalamata olives, feta cheese, and crispy tortilla chips, all tossed in a zesty Mediterranean dressing. It's rich in vitamins, minerals, healthy fats, and fiber, making it a nutritious and delicious meal option. Perfect as a main dish or side, it can be enhanced with grilled chicken or shrimp for added protein.",
+            Text(widget.detail,
             style: AppWidget.lightfontfiledstyle(),maxLines: 5,),
             SizedBox(height: 20,),
             Row(
@@ -101,7 +132,7 @@ class _DetailsState extends State<Details> {
                   Column(
                     children: [
                       Text('Total Price',style: AppWidget.semiboldtextfiledstyle(),),
-                      Text('pkr350',style: AppWidget.boldtextfiledstyle(),)
+                      Text("pkr"+total.toString(),style: AppWidget.boldtextfiledstyle(),)
                     ],
                   ),
                   Container(
@@ -109,21 +140,37 @@ class _DetailsState extends State<Details> {
                     decoration: BoxDecoration(
                       color: Colors.black
                     ),
-                    child: Row(
+                    child: GestureDetector(
+                      onTap: ()async{
+                        Map<String,dynamic> addFoodToCart={
+                          "Name":widget.name,
+                          "Quantity":a.toString(),
+                          "Total":total.toString(),
+                          "Image":widget.image
+                        };
+                        await DatabaseMethods().addFoodToCart(addFoodToCart, id!);
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            backgroundColor: Colors.orangeAccent,
+                            content: Text("Food added to cart successfully!!",
+                              style: TextStyle(fontSize: 18.0),)));
 
-                      children: [
-                        Text('Add To Cart',style: TextStyle(color: Colors.white,fontSize: 16,fontFamily: 'Poppins'),),
-                        SizedBox(width: 20,),
-                        Container(
-                          width: MediaQuery.sizeOf(context).width/8,
-                          padding: EdgeInsets.all(3),
-                            decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Icon(Icons.shopping_cart_outlined,color: Colors.white,))
+                      },
+                      child: Row(
 
-                      ],
+                        children: [
+                          Text('Add To Cart',style: TextStyle(color: Colors.white,fontSize: 16,fontFamily: 'Poppins'),),
+                          SizedBox(width: 20,),
+                          Container(
+                            width: MediaQuery.sizeOf(context).width/8,
+                            padding: EdgeInsets.all(3),
+                              decoration: BoxDecoration(
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Icon(Icons.shopping_cart_outlined,color: Colors.white,))
+
+                        ],
+                      ),
                     ),
                   )
               
